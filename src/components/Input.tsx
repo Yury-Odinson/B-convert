@@ -1,12 +1,15 @@
 import React from "react";
+import {InputProps} from "../tools/types";
 
-export const Input = () => {
+export const Input = ({value, setValue}: InputProps) => {
 
     const handleInputChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "+" || e.key === "-" || e.key === "e") {
             e.preventDefault();
         }
     };
+
+    const delegateState = (e: any) => setValue(e);
 
     return (
         <div className="relative rounded-md shadow-sm">
@@ -17,6 +20,7 @@ export const Input = () => {
                    focus:ring-indigo-600 sm:text-sm sm:leading-6"
                    placeholder="0.00"
                    onKeyDown={handleInputChange}
+                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => delegateState(e.target.value)}
             />
             <div className="absolute inset-y-0 right-0 flex items-center">
                 <label htmlFor="currency" className="sr-only">Currency</label>

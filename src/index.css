@@ -3,50 +3,55 @@
 @tailwind utilities;
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 .wrapper {
-  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
 }
 
 .main {
-  padding: 160px;
-  border: 1px solid blue;
+    padding: 160px;
+    border: 1px solid blue;
 }
-
 
 
 label {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid red;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid red;
 }
 
 input {
-  text-align: right;
+    text-align: right;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
 }
 
 .main-btn__revert {
-  width: 36px;
-  height: 36px;
-  background-image: url("/src/assets/img/revert.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+    width: 36px;
+    height: 36px;
+    background-image: url("/src/assets/img/revert.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
