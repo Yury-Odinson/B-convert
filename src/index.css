@@ -26,9 +26,27 @@ code {
 }
 
 .main {
+  padding: 160px;
+  border: 1px solid blue;
+}
+
+
+
+label {
+  margin: 20px;
+  padding: 20px;
   border: 1px solid red;
 }
 
 input {
   text-align: right;
+}
+
+.main-btn__revert {
+  width: 36px;
+  height: 36px;
+  background-image: url("/src/assets/img/revert.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
