@@ -5,5 +5,9 @@ export type ConversationRequest = {
 
 export type InputProps = {
     value: number,
-    setValue: any
+    currency: string,
+    setValue: any,
+    setCurrency: any
 };
+
+export type Currency = "USDT" | "BTC" | "ETH";

@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import {InputProps} from "../tools/types";
 
-export const Input = ({value, setValue}: InputProps) => {
+export const Input = ({currency, setValue, setCurrency}: InputProps) => {
+
+    const [cur, setCur] = useState<string>(currency);
 
     const handleInputChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "+" || e.key === "-" || e.key === "e") {
@@ -9,7 +11,13 @@ export const Input = ({value, setValue}: InputProps) => {
         }
     };
 
-    const delegateState = (e: any) => setValue(e);
+    const handlerSelectOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedCurrency = e.target.value;
+        setCur(selectedCurrency);
+        setCurrency(selectedCurrency);
+    };
+
+    const delegateState = (e: string) => setValue(e);
 
     return (
         <div className="relative rounded-md shadow-sm">
@@ -24,13 +32,16 @@ export const Input = ({value, setValue}: InputProps) => {
             />
             <div className="absolute inset-y-0 right-0 flex items-center">
                 <label htmlFor="currency" className="sr-only">Currency</label>
-                <select id="currency" name="currency"
+                <select name="currency"
                         className="h-full rounded-md border-0 bg-transparent
                         py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset
-                        focus:ring-indigo-600 sm:text-sm">
-                    <option>USDT</option>
-                    <option>BTC</option>
-                    <option>ETH</option>
+                        focus:ring-indigo-600 sm:text-sm"
+                        value={currency}
+                        onChange={handlerSelectOption}
+                >
+                    <option value={"USDT"}>USDT</option>
+                    <option value={"BTC"}>BTC</option>
+                    <option value={"ETH"}>ETH</option>
                 </select>
             </div>
         </div>
