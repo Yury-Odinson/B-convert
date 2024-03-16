@@ -39,9 +39,9 @@ export const Input = ({currency, setValue, setCurrency}: InputProps) => {
                         value={currency}
                         onChange={handlerSelectOption}
                 >
-                    <option value={"USDT"}>USDT</option>
-                    <option value={"BTC"}>BTC</option>
-                    <option value={"ETH"}>ETH</option>
+                    <option value={"usd"}>USDT</option>
+                    <option value={"btc"}>BTC</option>
+                    <option value={"eth"}>ETH</option>
                 </select>
             </div>
         </div>

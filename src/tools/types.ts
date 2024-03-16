@@ -1,6 +1,6 @@
 export type ConversationRequest = {
-    first: string,
-    second: string
+    firstCurrency: string,
+    secondCurrency: string
 };
 
 export type InputProps = {
@@ -10,4 +10,4 @@ export type InputProps = {
     setCurrency: any
 };
 
-export type Currency = "USDT" | "BTC" | "ETH";
+export type Currency = "usdt" | "btc" | "eth" | "usd" | "bitcoin" |"ethereum";

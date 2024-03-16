@@ -5,12 +5,21 @@ const options = {
     headers: {'x-cg-demo-api-key': 'CG-gCy2HCkHZpDSETuZgxxPVDrm'}
 };
 
-export const conversionRequest = async ({first, second}: ConversationRequest) => {
-    const apiURL = `https://api.coingecko.com/api/v3/simple/price?ids=${first}&vs_currencies=${second}`;
+export const conversionRequest = async ({firstCurrency, secondCurrency}: ConversationRequest) => {
 
+    const expandCurrency = () => {
+        switch (firstCurrency) {
+            case "usdt": return "usd";
+            case "btc" : return "bitcoin";
+            case "eth" : return "ethereum";
+            default: return firstCurrency;
+        }
+    };
+
+    const apiURL = `https://api.coingecko.com/api/v3/simple/price?ids=${expandCurrency()}&vs_currencies=${secondCurrency}`;
     try {
         const response = await fetch(apiURL, options);
-        console.log(response.json());
+        return response.json();
     } catch (error) {
         console.log(error);
     }
