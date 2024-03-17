@@ -1,9 +1,14 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {InputProps} from "../tools/types";
 
-export const Input = ({currency, setValue, setCurrency}: InputProps) => {
+export const Input = ({value, currency, setValue, setCurrency}: InputProps) => {
 
+    const [val, setVal] = useState<number>(value);
     const [cur, setCur] = useState<string>(currency);
+
+    useEffect(() => {
+        setVal(value)
+    }, [value]);
 
     const handleInputChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "+" || e.key === "-" || e.key === "e") {
@@ -27,6 +32,7 @@ export const Input = ({currency, setValue, setCurrency}: InputProps) => {
                    placeholder:text-gray-400 focus:ring-2 focus:ring-inset
                    focus:ring-indigo-600 sm:text-sm sm:leading-6"
                    placeholder="0.00"
+                   value={value}
                    onKeyDown={handleInputChange}
                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => delegateState(e.target.value)}
             />

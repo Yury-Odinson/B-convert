@@ -10,4 +10,9 @@ export type InputProps = {
     setCurrency: any
 };
 
+export type ExchangeRates = {
+    amount: number,
+    onePrice: number
+}
+
 export type Currency = "usdt" | "btc" | "eth" | "usd" | "bitcoin" |"ethereum";

@@ -1,26 +1,40 @@
 import {Input} from "./Input";
 import {useState} from "react";
 import {Currency} from "../tools/types";
-import {conversionRequest} from "../tools/utils";
+import {calculate, conversionRequest} from "../tools/utils";
 
 export const Main = () => {
 
-    const [firstInput, setFirstInput] = useState<number>(0.00);
-    const [secondInput, setSecondInput] = useState<number>(0.00);
+    const [firstInput, setFirstInput] = useState<number>(0);
+    const [secondInput, setSecondInput] = useState<number>(0);
     const [firstCurrency, setFirstCurrency] = useState<Currency>("eth");
     const [secondCurrency, setSecondCurrency] = useState<Currency>("btc");
 
-    const [data, setData] = useState<any>();
-
     const revertCurrency = () => {
+        setFirstInput(secondInput);
+        setSecondInput(firstInput);
         setFirstCurrency(secondCurrency);
         setSecondCurrency(firstCurrency);
     };
 
     const check = () => {
         conversionRequest({firstCurrency, secondCurrency}).then((e) => {
-            setData(e);
-            console.log(Object(e))
+            const findNestedValue = (obj: any): any => {
+                for (const key in obj) {
+                    if (typeof obj[key] === 'object') {
+                        return findNestedValue(obj[key]); // Рекурсивно вызываем функцию для вложенного объекта
+                    } else {
+                        return obj[key]; // Возвращаем значение, если это не объект
+                    }
+                }
+            };
+
+            const onePrice = findNestedValue(e);
+            console.log(onePrice);
+            const test = calculate(firstInput, onePrice);
+            console.log(test);
+            setSecondInput(test);
+
         })
     };
 

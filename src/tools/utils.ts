@@ -1,4 +1,4 @@
-import {ConversationRequest} from "./types";
+import {ConversationRequest, ExchangeRates} from "./types";
 
 const options = {
     method: 'GET',
@@ -9,10 +9,14 @@ export const conversionRequest = async ({firstCurrency, secondCurrency}: Convers
 
     const expandCurrency = () => {
         switch (firstCurrency) {
-            case "usdt": return "usd";
-            case "btc" : return "bitcoin";
-            case "eth" : return "ethereum";
-            default: return firstCurrency;
+            case "usdt":
+                return "usd";
+            case "btc" :
+                return "bitcoin";
+            case "eth" :
+                return "ethereum";
+            default:
+                return firstCurrency;
         }
     };
 
@@ -24,3 +28,6 @@ export const conversionRequest = async ({firstCurrency, secondCurrency}: Convers
         console.log(error);
     }
 };
+
+export const calculate = (amount: number, onePrice: number) => amount * onePrice;
+
