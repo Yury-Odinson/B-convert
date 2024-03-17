@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {InputProps} from "../tools/types";
+import {Currency, InputProps} from "../tools/types";
 
 export const Input = ({value, currency, setValue, setCurrency}: InputProps) => {
 
@@ -19,10 +19,10 @@ export const Input = ({value, currency, setValue, setCurrency}: InputProps) => {
     const handlerSelectOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedCurrency = e.target.value;
         setCur(selectedCurrency);
-        setCurrency(selectedCurrency);
+        setCurrency(selectedCurrency as Currency);
     };
 
-    const delegateState = (e: string) => setValue(e);
+    const delegateState = (e: number | string) => setValue(e as number);
 
     return (
         <div className="relative rounded-md shadow-sm ">

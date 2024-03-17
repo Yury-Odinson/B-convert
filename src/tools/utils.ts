@@ -1,4 +1,4 @@
-import {ConversationRequest, ExchangeRates} from "./types";
+import {ConversationRequest} from "./types";
 
 const options = {
     method: 'GET',

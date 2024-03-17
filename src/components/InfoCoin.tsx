@@ -8,7 +8,7 @@ export const InfoCoin = ({firstCurrency, secondCurrency, onePrice}: InfoProps) =
         const hours = currentDate.getHours();
         const minutes = currentDate.getMinutes();
         const second = currentDate.getSeconds();
-        return `Данные обновлены в ${hours}:${minutes}:${second}`
+        return `Data update in ${hours}:${minutes}:${second}`
     };
 
     return (
