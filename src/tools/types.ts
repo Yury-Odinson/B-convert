@@ -13,6 +13,12 @@ export type InputProps = {
 export type ExchangeRates = {
     amount: number,
     onePrice: number
-}
+};
 
 export type Currency = "usdt" | "btc" | "eth" | "usd" | "bitcoin" |"ethereum";
+
+export type InfoProps = {
+    firstCurrency: string,
+    secondCurrency: string,
+    onePrice: number
+};
