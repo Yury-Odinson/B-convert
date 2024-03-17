@@ -21,20 +21,16 @@ export const Main = () => {
         conversionRequest({firstCurrency, secondCurrency}).then((e) => {
             const findNestedValue = (obj: any): any => {
                 for (const key in obj) {
-                    if (typeof obj[key] === 'object') {
-                        return findNestedValue(obj[key]); // Рекурсивно вызываем функцию для вложенного объекта
+                    if (typeof obj[key] === "object") {
+                        return findNestedValue(obj[key]); // recursively calling a func on a newest object
                     } else {
-                        return obj[key]; // Возвращаем значение, если это не объект
+                        return obj[key]; // return value if it is not an object
                     }
                 }
             };
-
             const onePrice = findNestedValue(e);
-            console.log(onePrice);
-            const test = calculate(firstInput, onePrice);
-            console.log(test);
-            setSecondInput(test);
-
+            const result = calculate(firstInput, onePrice);
+            setSecondInput(result);
         })
     };
 

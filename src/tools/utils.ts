@@ -29,5 +29,4 @@ export const conversionRequest = async ({firstCurrency, secondCurrency}: Convers
     }
 };
 
-export const calculate = (amount: number, onePrice: number) => amount * onePrice;
-
+export const calculate = (amount: number, onePrice: number) => Number((amount * onePrice).toFixed(6));
