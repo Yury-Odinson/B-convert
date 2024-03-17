@@ -25,16 +25,9 @@ code {
     box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
 }
 
-.main {
-    padding: 160px;
-    border: 1px solid blue;
-}
-
-
 label {
     margin: 20px;
     padding: 20px;
-    border: 1px solid red;
 }
 
 input {
@@ -54,4 +47,9 @@ input::-webkit-inner-spin-button {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+
+.test {
+    /*border: 1px solid red;*/
 }

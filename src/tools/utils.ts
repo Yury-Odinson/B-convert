@@ -1,4 +1,4 @@
-import {ConversationRequest, ExchangeRates} from "./types";
+import {ConversationRequest} from "./types";
 
 const options = {
     method: 'GET',
@@ -30,3 +30,16 @@ export const conversionRequest = async ({firstCurrency, secondCurrency}: Convers
 };
 
 export const calculate = (amount: number, onePrice: number) => Number((amount * onePrice).toFixed(6));
+
+export const fullCurrencyName = (name: string) => {
+    switch (name) {
+        case "usd":
+            return "USDT";
+        case "btc" :
+            return "Bitcoin";
+        case "eth" :
+            return "Ethereum";
+        default:
+            return name;
+    }
+};
