@@ -14,6 +14,7 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #CCCCCC19;
 }
 
 code {
@@ -21,17 +22,9 @@ code {
     monospace;
 }
 
-.wrapper {
+.main {
+    background-color: #FFF;
     box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
-}
-
-label {
-    margin: 20px;
-    padding: 20px;
-}
-
-input {
-    text-align: right;
 }
 
 input::-webkit-outer-spin-button,
@@ -57,4 +50,16 @@ input::-webkit-inner-spin-button {
 .readonlyInput {
     cursor: default;
     background-color: #CCCCCC30;
+}
+
+@media (max-width: 600px) {
+    .wrapper {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+    }
+
+    .main {
+        padding: 20px;
+    }
 }

@@ -37,7 +37,7 @@ export const Main = () => {
     };
 
     return (
-        <div className="m-auto max-w-full">
+        <div className="main m-auto p-10 rounded-xl">
 
             <div className="flex items-center">
                 <div className="flex flex-col p-2 gap-5">
