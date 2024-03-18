@@ -45,12 +45,14 @@ export const Main = () => {
                            currency={firstCurrency}
                            setValue={setFirstInput}
                            setCurrency={setFirstCurrency}
+                           readonly={false}
                            key={1}
                     />
                     <Input value={secondInput}
                            currency={secondCurrency}
                            setValue={setSecondInput}
                            setCurrency={setSecondCurrency}
+                           readonly={true}
                            key={2}
                     />
                 </div>

@@ -49,7 +49,12 @@ input::-webkit-inner-spin-button {
     background-position: center;
 }
 
+.select {
+    margin: 2px;
+    background-color: #FFF;
+}
 
-.test {
-    /*border: 1px solid red;*/
+.readonlyInput {
+    cursor: default;
+    background-color: #CCCCCC30;
 }

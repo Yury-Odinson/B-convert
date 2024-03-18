@@ -8,11 +8,12 @@ export const InfoCoin = ({firstCurrency, secondCurrency, onePrice}: InfoProps) =
         const hours = currentDate.getHours();
         const minutes = currentDate.getMinutes();
         const second = currentDate.getSeconds();
-        return `Data update in ${hours}:${minutes}:${second}`
+        const formatSecond = second <= 9 ? `0${second}` : second;
+        return `Data update in ${hours}:${minutes}:${formatSecond}`;
     };
 
     return (
-        <div className="test mt-2 p-2 flex flex-col max-w-xs">
+        <div className="mt-2 p-2 flex flex-col max-w-xs">
             <p className="text-lg">
                 1
                 <strong className="px-2">{fullCurrencyName(firstCurrency)}</strong>
