@@ -10,6 +10,7 @@ export type InputProps = {
     currency: string,
     setValue: Dispatch<SetStateAction<number>>,
     setCurrency: Dispatch<React.SetStateAction<Currency>>
+    readonly: boolean
 };
 
 export type ExchangeRates = {

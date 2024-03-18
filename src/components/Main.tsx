@@ -37,7 +37,7 @@ export const Main = () => {
     };
 
     return (
-        <div className="m-auto max-w-full">
+        <div className="main m-auto p-10 rounded-xl">
 
             <div className="flex items-center">
                 <div className="flex flex-col p-2 gap-5">
@@ -45,12 +45,14 @@ export const Main = () => {
                            currency={firstCurrency}
                            setValue={setFirstInput}
                            setCurrency={setFirstCurrency}
+                           readonly={false}
                            key={1}
                     />
                     <Input value={secondInput}
                            currency={secondCurrency}
                            setValue={setSecondInput}
                            setCurrency={setSecondCurrency}
+                           readonly={true}
                            key={2}
                     />
                 </div>
