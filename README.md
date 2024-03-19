@@ -1,3 +1,11 @@
+## Для имитации ошибки запроса - в файле utils.ts в 23-й строке изменить URL:
+
+    // рабочий URL:
+    const apiURL = `https://api.coingecko.com/api/v3/simple/price?ids=${expandCurrency()}&vs_currencies=${secondCurrency}`;
+
+    // нерабочий URL:
+    const apiURL = `https://api.coingecko.com/api/v3/simple/price?ids=${expandCurrency()}&vs_curr_______encies=${secondCurrency}`;
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
