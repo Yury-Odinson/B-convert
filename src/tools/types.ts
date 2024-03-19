@@ -13,9 +13,8 @@ export type InputProps = {
     readonly: boolean
 };
 
-export type ExchangeRates = {
-    amount: number,
-    onePrice: number
+export type NestedObject = {
+    [key: string]: string | NestedObject;
 };
 
 export type Currency = "usdt" | "btc" | "eth" | "usd" | "bitcoin" |"ethereum";
