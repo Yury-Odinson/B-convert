@@ -25,7 +25,7 @@ export const conversionRequest = async ({firstCurrency, secondCurrency}: Convers
         const response = await fetch(apiURL, options);
         return response.json();
     } catch (error) {
-        console.log(error);
+        throw error;
     }
 };
 
