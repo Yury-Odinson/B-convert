@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {Currency, NestedObject} from "../tools/types";
 import {calculate, conversionRequest} from "../tools/utils";
 import {InfoCoin} from "./InfoCoin";
+import {Alert} from "./Alert";
 
 export const Main = () => {
 
@@ -11,27 +12,35 @@ export const Main = () => {
     const [firstCurrency, setFirstCurrency] = useState<Currency>("eth");
     const [secondCurrency, setSecondCurrency] = useState<Currency>("btc");
     const [oneCoin, setOneCoin] = useState<number>(0);
+    const [isError, setIsError] = useState<boolean>(false);
 
     useEffect(() => {
-        conversionRequest({firstCurrency, secondCurrency}).then((e) => {
-            let onePrice = 0;
-            const findNestedValue = (obj: NestedObject): number => {
-                for (const key in obj) {
-                    if (typeof obj[key] === "object") {
-                        return findNestedValue(obj[key] as NestedObject); // recursively calling a func on a newest object
-                    } else {
-                        return Number(obj[key]); // return value if it is not an object
-                    }
+        conversionRequest({firstCurrency, secondCurrency})
+            .then((e) => {
+                if (e.error) {
+                    return setIsError(true);
                 }
-                return onePrice;
-            };
-            onePrice = findNestedValue(e);
-            const result = calculate(firstInput, onePrice);
-            setSecondInput(result);
-            setOneCoin(onePrice);
-        });
+                setIsError(false);
+                let onePrice = 0;
+                const findNestedValue = (obj: NestedObject): number => {
+                    for (const key in obj) {
+                        if (typeof obj[key] === "object") {
+                            return findNestedValue(obj[key] as NestedObject); // recursively calling a func on a newest object
+                        } else {
+                            return Number(obj[key]); // return value if it is not an object
+                        }
+                    }
+                    return onePrice;
+                };
+                onePrice = findNestedValue(e);
+                const result = calculate(firstInput, onePrice);
+                setSecondInput(result);
+                setOneCoin(onePrice);
+            })
 
-    }, [firstInput, secondInput, firstCurrency, secondCurrency]);
+            .catch(() => setIsError(true));
+
+    }, [firstInput, secondInput, firstCurrency, secondCurrency, isError]);
 
     const revertCurrency = () => {
         setFirstCurrency(secondCurrency);
@@ -39,36 +48,40 @@ export const Main = () => {
     };
 
     return (
-        <div className="main m-auto p-10 rounded-xl">
+        <>
+            <div className="main m-auto p-10 rounded-xl">
 
-            <div className="flex items-center">
-                <div className="flex flex-col p-2 gap-5">
-                    <Input value={firstInput}
-                           currency={firstCurrency}
-                           setValue={setFirstInput}
-                           setCurrency={setFirstCurrency}
-                           readonly={false}
-                           key={1}
-                    />
-                    <Input value={secondInput}
-                           currency={secondCurrency}
-                           setValue={setSecondInput}
-                           setCurrency={setSecondCurrency}
-                           readonly={true}
-                           key={2}
-                    />
+                <div className="flex items-center">
+                    <div className="flex flex-col p-2 gap-5">
+                        <Input value={firstInput}
+                               currency={firstCurrency}
+                               setValue={setFirstInput}
+                               setCurrency={setFirstCurrency}
+                               readonly={false}
+                               key={1}
+                        />
+                        <Input value={secondInput}
+                               currency={secondCurrency}
+                               setValue={setSecondInput}
+                               setCurrency={setSecondCurrency}
+                               readonly={true}
+                               key={2}
+                        />
+                    </div>
+
+                    <button className="btn main-btn__revert" type="button" onClick={revertCurrency}/>
+
                 </div>
 
-                <button className="btn main-btn__revert" type="button" onClick={revertCurrency}/>
+                <InfoCoin
+                    firstCurrency={firstCurrency}
+                    secondCurrency={secondCurrency}
+                    onePrice={oneCoin}
+                />
 
             </div>
 
-            <InfoCoin
-                firstCurrency={firstCurrency}
-                secondCurrency={secondCurrency}
-                onePrice={oneCoin}
-            />
-
-        </div>
+            {isError ? <Alert/> : null}
+        </>
     );
 };
