@@ -1,6 +1,6 @@
 import {Input} from "./Input";
 import {useEffect, useState} from "react";
-import {Currency} from "../tools/types";
+import {Currency, NestedObject} from "../tools/types";
 import {calculate, conversionRequest} from "../tools/utils";
 import {InfoCoin} from "./InfoCoin";
 
@@ -14,16 +14,18 @@ export const Main = () => {
 
     useEffect(() => {
         conversionRequest({firstCurrency, secondCurrency}).then((e) => {
-            const findNestedValue = (obj: any): any => {
+            let onePrice = 0;
+            const findNestedValue = (obj: NestedObject): number => {
                 for (const key in obj) {
                     if (typeof obj[key] === "object") {
-                        return findNestedValue(obj[key]); // recursively calling a func on a newest object
+                        return findNestedValue(obj[key] as NestedObject); // recursively calling a func on a newest object
                     } else {
-                        return obj[key]; // return value if it is not an object
+                        return Number(obj[key]); // return value if it is not an object
                     }
                 }
+                return onePrice;
             };
-            const onePrice = findNestedValue(e);
+            onePrice = findNestedValue(e);
             const result = calculate(firstInput, onePrice);
             setSecondInput(result);
             setOneCoin(onePrice);
