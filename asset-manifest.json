@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/b-convert/static/css/main.eca9f68e.css",
+    "main.js": "/b-convert/static/js/main.56efb886.js",
+    "static/js/453.3a9f9e7a.chunk.js": "/b-convert/static/js/453.3a9f9e7a.chunk.js",
+    "static/media/revert.png": "/b-convert/static/media/revert.0ee71ee4dff25d2a3d21.png",
+    "index.html": "/b-convert/index.html",
+    "main.eca9f68e.css.map": "/b-convert/static/css/main.eca9f68e.css.map",
+    "main.56efb886.js.map": "/b-convert/static/js/main.56efb886.js.map",
+    "453.3a9f9e7a.chunk.js.map": "/b-convert/static/js/453.3a9f9e7a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eca9f68e.css",
+    "static/js/main.56efb886.js"
+  ]
+}
