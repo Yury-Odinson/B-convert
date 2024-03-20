@@ -1,4 +1,6 @@
-## Для имитации ошибки запроса - в файле utils.ts в 23-й строке изменить URL:
+## https://yury-odinson.github.io/B-convert/
+
+### Для имитации ошибки запроса - в файле utils.ts в 23-й строке изменить URL:
 
     // рабочий URL:
     const apiURL = `https://api.coingecko.com/api/v3/simple/price?ids=${expandCurrency()}&vs_currencies=${secondCurrency}`;
